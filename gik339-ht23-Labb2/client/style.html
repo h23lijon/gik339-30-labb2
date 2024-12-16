@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupp 30</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="lab-title">Grupp 30 - Labb 2</h1>
+    <!-- Formulär för att lägga till en ny användare -->
+    <h1>Lägg till ny användare</h1>
+    <form id="userForm">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required><br>
+
+        <label for="firstName">Förnamn:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+
+        <label for="lastName">Efternamn:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <label for="userName">Användarnamn:</label>
+        <input type="text" id="userName" name="userName" required><br>
+
+        <label for="color">Färg:</label>
+        <input type="text" id="color" name="color" required><br>
+
+        <button type="submit">Skicka</button>
+    </form>
+
+    <!-- Om användarna ska visas här -->
+    <h2>Alla användare:</h2>
+    <div id="userList"></div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
