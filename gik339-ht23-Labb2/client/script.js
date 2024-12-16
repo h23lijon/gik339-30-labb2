@@ -5,7 +5,7 @@ console.log('Starting fetch...');
 fetch(url)
   .then((response) => response.json()) 
   .then((users) => {
-    console.log(users); g
+    console.log(users);
 
     const ul = document.createElement('ul');
     ul.classList.add('user-list'); 
