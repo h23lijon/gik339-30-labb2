@@ -1,22 +1,18 @@
-const url = 'http://localhost:3000/users'; // URL till din server
+const url = 'http://localhost:3000/users'; 
 
-// Hämtar användare från servern och visar dem på sidan
+
 console.log('Starting fetch...');
 fetch(url)
-  .then((response) => response.json()) // Konverterar till JSON
+  .then((response) => response.json()) 
   .then((users) => {
-    console.log(users); // Logga användare för felsökning
+    console.log(users); g
 
-    // Skapa ett ul-element
     const ul = document.createElement('ul');
-    ul.classList.add('user-list'); // Lägg till en CSS-klass för styling
+    ul.classList.add('user-list'); 
 
-    // Loop genom users-arrayen
     users.forEach(user => {
-      // Skapa ett li-element för varje user
       const li = document.createElement('li');
-      li.classList.add('user-item'); // Lägg till en CSS-klass för styling
-      // Skapa innehåll med rubrik och paragrafer för att visa användardata
+      li.classList.add('user-item'); 
       li.style.backgroundColor = user.color;
       li.innerHTML = `
         <h3>${user.firstName} ${user.lastName}</h3>
@@ -24,8 +20,6 @@ fetch(url)
         <p>Username: ${user.username}</p>
         <p>Color: ${user.color}</p>
       `;
-
-      // Lägg till li-elementet i ul
       ul.appendChild(li);
     });
         
@@ -37,17 +31,15 @@ if (userList) {
   }
 })
 .catch((error) => {
-  console.error('Error fetching users:', error); // Hantera fel
+  console.error('Error fetching users:', error);
 });
 
-// Eventlyssnare för formuläret
-const userForm = document.getElementById('userForm'); // Referens till formuläret
+const userForm = document.getElementById('userForm'); 
 
 userForm.addEventListener('submit', sendUserData);
 
-// Funktion för att skicka användardata
 function sendUserData(e) {
-  e.preventDefault(); // Förhindra att sidan laddas om
+  e.preventDefault(); 
 
   const userData = {
     id: userForm.id.value,
@@ -57,22 +49,21 @@ function sendUserData(e) {
     color: userForm.color.value,
   };
 
-  console.log(userData); // Logga den inskickade användardatan för felsökning
+  console.log(userData); 
 
-  const jsonData = JSON.stringify(userData); // Konvertera till JSON
+  const jsonData = JSON.stringify(userData); 
   console.log(jsonData);
 
   const request = new Request(url, {
-    method: 'POST', // Skicka data med POST
-    headers: { 'Content-Type': 'application/json' }, // Ange korrekt content-type
-    body: jsonData, // Skickad JSON-data
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: jsonData, 
   });
 
   fetch(request)
-    .then((response) => response.json()) // Vänta på att servern svarar
+    .then((response) => response.json()) 
     .then((data) => {
-      console.log('User added:', data); // Bekräfta att användaren lades till
-      // Uppdatera listan med användare efter att den nya användaren lagts till
+      console.log('User added:', data); 
       const userList = document.getElementById('userList');
       const html = `
         <p>
@@ -87,7 +78,7 @@ function sendUserData(e) {
       userList.insertAdjacentHTML('beforeend', html);
     })
     .catch((error) => {
-      console.error('Error sending user data:', error); // Hantera fel
+      console.error('Error sending user data:', error); 
     });
 }
 
